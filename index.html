@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LOGO | New Season</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+
+<header class="site-header" id="header">
+    <div class="left">
+        <button class="menu-btn" id="menu-btn" aria-label="Menu" aria-expanded="false"><i class="bi bi-list"></i></button>
+        <nav class="main-nav" id="main-nav">
+            <a href="#products">Women</a>
+            <a href="#products">Men</a>
+            <a href="#products">Kids</a>
+        </nav>
+    </div>
+    <a href="#" class="logo">LOGO</a>
+    <div class="header-actions">
+        <a href="#" id="search-btn" aria-label="Search"><i class="bi bi-search"></i></a>
+        <a href="#" aria-label="Account"><i class="bi bi-person"></i></a>
+        <a href="#" id="wishlist-btn" class="wishlist-link" aria-label="Wishlist">
+            <i class="bi bi-heart"></i><span class="badge hidden" id="wishlist-badge">0</span>
+        </a>
+        <a href="#" aria-label="Cart"><i class="bi bi-bag"></i></a>
+    </div>
+</header>
+
+<div class="search-panel" id="search-panel" aria-hidden="true">
+    <form class="search-form" id="search-form" role="search">
+        <i class="bi bi-search"></i>
+        <input type="search" id="search-input" placeholder="What are you looking for?" autocomplete="off" aria-label="Search products">
+        <button type="button" class="modal-close" id="search-close" aria-label="Close search"><i class="bi bi-x-lg"></i></button>
+    </form>
+    <div class="search-results" id="search-results"></div>
+</div>
+
+<main>
+    <section class="hero">
+        <img src="image.jpg" alt="" onerror="this.remove()">
+        <div class="hero-text">
+            <p>New Season</p>
+            <h1>Made to be noticed</h1>
+            <a href="#products" class="btn btn-light">Shop now</a>
+        </div>
+    </section>
+
+    <section class="products" id="products">
+        <div class="section-head">
+            <h2>New arrivals</h2>
+            <div class="filters" id="filters">
+                <button class="chip active" data-cat="all">All</button>
+                <button class="chip" data-cat="women">Women</button>
+                <button class="chip" data-cat="men">Men</button>
+                <button class="chip" data-cat="kids">Kids</button>
+            </div>
+        </div>
+        <p class="result-note" id="result-note" hidden></p>
+        <div class="grid" id="grid"></div>
+    </section>
+
+    <section class="newsletter">
+        <h2>Join the list</h2>
+        <p>Get first access to new drops and offers.</p>
+        <form id="news-form">
+            <input type="email" id="news-email" placeholder="Enter your email" required aria-label="Email">
+            <button class="btn btn-solid" type="submit">Subscribe</button>
+        </form>
+        <p class="news-msg" id="news-msg"></p>
+    </section>
+</main>
+
+<footer class="footer">
+    <div class="footer-grid">
+        <div><h4>Shop</h4><a href="#products">Women</a><a href="#products">Men</a><a href="#products">Kids</a></div>
+        <div><h4>Help</h4><a href="#">Shipping</a><a href="#">Returns</a><a href="#">Contact</a></div>
+        <div><h4>Company</h4><a href="#">About</a><a href="#">Careers</a><a href="#">Stores</a></div>
+    </div>
+    <p class="copy">&copy; 2026 LOGO. All rights reserved.</p>
+</footer>
+
+<div class="modal-overlay" id="wishlist-modal" aria-hidden="true">
+    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="wishlist-title">
+        <div class="modal-header">
+            <h3 id="wishlist-title">My Wishlist <span id="wishlist-count"></span></h3>
+            <button class="modal-close" id="wishlist-close" aria-label="Close wishlist"><i class="bi bi-x-lg"></i></button>
+        </div>
+        <div class="modal-body" id="wishlist-list"></div>
+        <div class="modal-footer">
+            <button class="btn btn-outline" id="wishlist-continue">Continue shopping</button>
+            <button class="btn btn-solid" id="wishlist-clear">Clear all</button>
+        </div>
+    </div>
+</div>
+
+<div class="toast" id="toast" role="status"></div>
+
+<script src="index.js"></script>
+</body>
+</html>
