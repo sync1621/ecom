@@ -8,9 +8,9 @@ const matches = (q) => {
     return products.filter(p => words.every(w => (p.name + " " + p.cat).toLowerCase().includes(w)));
 };
 
-/* ---------- DATA (palitan ng totoong products; puwedeng magdagdag ng image: "img/x.jpg") ---------- */
+
 const products = [
-    { id: 1, name: "Classic Logo Tee",       price: 250, cat: "women", tone: "#efe6da", icon: "bi-badge-tm", img: "https://i.pinimg.com/736x/e0/9e/e6/e09ee6ca2c4de51851a37c3b59dde4a8.jpg" },
+    { id: 1, name: "Classic Logo Tee",  price: 250, cat: "women", tone: "#efe6da", icon: "bi-badge-tm", img: "https://i.pinimg.com/736x/e0/9e/e6/e09ee6ca2c4de51851a37c3b59dde4a8.jpg" },
     { id: 2, name: "Architecturally Structured Snow-White Cotton Ensemble",   price: 200, cat: "men",   tone: "#dfe6ee", icon: "bi-rulers", img: "https://i.pinimg.com/736x/fb/3f/9e/fb3f9ec35fc25d177be112ccdaacf13c.jpg" },
     { id: 3, name: "Loose-Structured Heritage Denim Trousers",  price: 590, cat: "women", tone: "#e8dccb", icon: "bi-bag", img: "https://i.pinimg.com/736x/2f/aa/89/2faa89cfea932268f0827cc4d033a88b.jpg" },
     { id: 4, name: "Culturally Referenced Romantic Utility Bag",       price: 3290, cat: "kids",   tone: "#e4e4e4", icon: "bi-snow", img: "https://i.pinimg.com/736x/53/9c/ac/539cac69681b90af6d1ce1d07f3c2757.jpg" },
@@ -47,12 +47,12 @@ function toast(msg) {
     toastTimer = setTimeout(() => t.classList.remove("show"), 2000);
 }
 
-/* ---------- WISHLIST STATE (naka-save sa localStorage) ---------- */
+/* ---------- WISHLIST STATE---------- */
 let wishlist = [];
 try { wishlist = JSON.parse(localStorage.getItem("wishlist")) || []; } catch (e) { wishlist = []; }
 const saveWishlist = () => { try { localStorage.setItem("wishlist", JSON.stringify(wishlist)); } catch (e) {} };
 
-/* ---------- PRODUCT GRID + FILTERS ---------- */
+/* ---------- PRODUCT GRID AND FILTERS ---------- */
 let category = "all";
 function renderGrid() {
     const found = query ? matches(query) : products;
@@ -70,12 +70,25 @@ function renderGrid() {
             <p class="card-price">${peso(p.price)}</p>
         </article>`).join("");
 }
+function setCategory(cat) {
+    category = cat;
+    document.querySelectorAll("#filters .chip").forEach(c => c.classList.toggle("active", c.dataset.cat === cat));
+    renderGrid();
+}
 $("filters").addEventListener("click", (e) => {
     const chip = e.target.closest(".chip");
-    if (!chip) return;
-    category = chip.dataset.cat;
-    document.querySelectorAll(".chip").forEach(c => c.classList.toggle("active", c === chip));
-    renderGrid();
+    if (chip) setCategory(chip.dataset.cat);
+});
+/* Nav + footer links (Women / Men / Kids): filter the grid, then scroll to Products */
+document.addEventListener("click", (e) => {
+    const link = e.target.closest("a[data-cat]");
+    if (!link) return;
+    e.preventDefault();
+    query = "";
+    sInput.value = "";
+    setCategory(link.dataset.cat);
+    setMenu(false);
+    $("products").scrollIntoView({ behavior: "smooth" });
 });
 $("grid").addEventListener("click", (e) => {
     const btn = e.target.closest(".heart");
