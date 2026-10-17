@@ -1,0 +1,61 @@
+
+CREATE DATABASE IF NOT EXISTS glamourify CHARACTER SET utf8mb4;
+USE glamourify;
+
+CREATE TABLE IF NOT EXISTS users (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  first_name VARCHAR(60) NOT NULL,
+  last_name VARCHAR(60) NOT NULL,
+  email VARCHAR(120) NOT NULL UNIQUE,
+  password_hash VARCHAR(255) NOT NULL,
+  phone VARCHAR(30) NOT NULL DEFAULT '',
+  address VARCHAR(255) NOT NULL DEFAULT '',
+  city VARCHAR(80) NOT NULL DEFAULT '',
+  province VARCHAR(80) NOT NULL DEFAULT '',
+  zip VARCHAR(10) NOT NULL DEFAULT '',
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB;
+
+CREATE TABLE IF NOT EXISTS vouchers (
+  code VARCHAR(30) PRIMARY KEY,
+  type ENUM('percent','fixed','shipping') NOT NULL,
+  value DECIMAL(10,2) NOT NULL DEFAULT 0,
+  min_spend DECIMAL(10,2) NOT NULL DEFAULT 0,
+  active TINYINT(1) NOT NULL DEFAULT 1
+) ENGINE=InnoDB;
+
+INSERT IGNORE INTO vouchers (code, type, value, min_spend) VALUES
+  ('GLAM10',     'percent',  10,   0),
+  ('WELCOME200', 'fixed',   200, 1500),
+  ('FREESHIP',   'shipping',  0,   0);
+
+CREATE TABLE IF NOT EXISTS orders (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  user_id INT NOT NULL,
+  full_name VARCHAR(120) NOT NULL,
+  email VARCHAR(120) NOT NULL,
+  phone VARCHAR(30) NOT NULL,
+  address VARCHAR(255) NOT NULL,
+  city VARCHAR(80) NOT NULL,
+  province VARCHAR(80) NOT NULL,
+  zip VARCHAR(10) NOT NULL,
+  shipping_method VARCHAR(20) NOT NULL,
+  shipping_fee DECIMAL(10,2) NOT NULL,
+  payment_method VARCHAR(20) NOT NULL,
+  voucher_code VARCHAR(30) NOT NULL DEFAULT '',
+  discount DECIMAL(10,2) NOT NULL DEFAULT 0,
+  subtotal DECIMAL(10,2) NOT NULL,
+  total DECIMAL(10,2) NOT NULL,
+  status VARCHAR(20) NOT NULL DEFAULT 'Pending',
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  FOREIGN KEY (user_id) REFERENCES users(id)
+) ENGINE=InnoDB;
+
+CREATE TABLE IF NOT EXISTS order_items (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  order_id INT NOT NULL,
+  product_id INT NOT NULL,
+  name VARCHAR(200) NOT NULL,
+  price DECIMAL(10,2) NOT NULL,
+  FOREIGN KEY (order_id) REFERENCES orders(id) ON DELETE CASCADE
+) ENGINE=InnoDB;

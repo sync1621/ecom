@@ -1,0 +1,83 @@
+[
+  {
+    "id": 1,
+    "name": "Basic Stussy Zip Hoodie",
+    "price": 2500,
+    "cat": "men",
+    "tone": "#efe7dc",
+    "icon": "bi-bag",
+    "img": "https://www.stussy.com/cdn/shop/files/1975001_BLBL_1.jpg?v=1768350944"
+  },
+  {
+    "id": 2,
+    "name": "Bathing Ape First Camo Shark Full Zip Hoodie",
+    "price": 2000,
+    "cat": "men",
+    "tone": "#dfe6ee",
+    "icon": "bi-rulers",
+    "img": "https://int.bape.com/cdn/shop/files/0ZXSWM007151QYEX-pdp-3.jpg?v=1774510323&width=800"
+  },
+  {
+    "id": 3,
+    "name": "Jordan 4 Retro \"Black Cat\"",
+    "price": 5900,
+    "cat": "men",
+    "tone": "#fff",
+    "icon": "bi-bag",
+    "img": "https://cdn.shopify.com/s/files/1/0935/4690/5896/files/AURORA_FV5029-010_PHCFH001-1000_1.png?v=1763995518"
+  },
+  {
+    "id": 4,
+    "name": "Culturally Referenced Romantic Utility Bag",
+    "price": 5999,
+    "cat": "women",
+    "tone": "#e4e4e4",
+    "icon": "bi-snow",
+    "img": "https://m.media-amazon.com/images/I/71Tn326fBAL._AC_SL1500_.jpg"
+  },
+  {
+    "id": 5,
+    "name": "Classic Stussy Tee for kids",
+    "price": 1290,
+    "cat": "kids",
+    "tone": "#f6e3e3",
+    "icon": "bi-emoji-smile",
+    "img": "https://www.stussy.com/cdn/shop/files/1905205_BLAC_1.jpg?v=1788898726"
+  },
+  {
+    "id": 6,
+    "name": "Corteiz Hoodie",
+    "price": 5999,
+    "cat": "men",
+    "tone": "#f0e0e8",
+    "icon": "bi-stars",
+    "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTUepcZGmKEr-rox8J8OupIe44pRIorY6grvRiE40kFVWyYJI1xzqzhIY2g&s=10"
+  },
+  {
+    "id": 7,
+    "name": "Christian Louboutin So Kate",
+    "price": 2390,
+    "cat": "women",
+    "tone": "#e6ebdd",
+    "icon": "bi-sun",
+    "img": "https://cdn.mos.cms.futurecdn.net/WV5afBXayg4cn3JPYNoFXW.jpg"
+  },
+  {
+    "id": 8,
+    "name": "Nike Shox R4 Metallic Silver Black",
+    "price": 2790,
+    "cat": "men",
+    "tone": "#dde8f0",
+    "icon": "bi-cloud",
+    "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTezBqiwE4C5EGelWCQnb1kGBNdIF_GthyMiyhOIsAwd1uBFYOjEQPDBx8&s=10"
+  },
+  {
+    "id": 9,
+    "name": "Stussy Dot Surf Puff Tee",
+    "price": 2899,
+    "cat": "men",
+    "tone": "#efe7dc",
+    "icon": "bi-bag",
+    "img": "stussPuff.jpg"
+  }
+]
